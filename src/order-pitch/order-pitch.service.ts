@@ -26,7 +26,7 @@ export class OrderPitchService {
 
   async fetchRecentOrders(orderId: string) {
     return await this.orderModel.find({
-      orderId: { $regex: orderId, $options: 'i' },
+      orderId: { $regex: `^${orderId}`, $options: 'i' },
     });
   }
 }
