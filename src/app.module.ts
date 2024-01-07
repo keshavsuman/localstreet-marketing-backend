@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { OrderPitchModule } from './order-pitch/order-pitch.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ShopModule } from './shop/shop.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '../.env',
+      envFilePath: '.env',
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -16,6 +17,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     OrderPitchModule,
+    ShopModule,
   ],
   controllers: [],
   providers: [],
